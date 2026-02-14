@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mahika's 4th Birthday Party</title>
+  <style>
+    :root {
+      --night: #0e1a2b;
+      --sky: #1d3a66;
+      --sun: #ffb347;
+      --confetti-1: #ff6f61;
+      --confetti-2: #6bc5d2;
+      --confetti-3: #f9d65c;
+      --confetti-4: #7dd181;
+      --ink: #13233b;
+      --paper: #fff7ea;
+      --accent: #ff8a5b;
+      --accent-2: #5e91ff;
+      --shadow: rgba(10, 20, 40, 0.22);
+      --card: rgba(255, 247, 234, 0.92);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Baloo 2", "Trebuchet MS", "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: radial-gradient(circle at top, #f9d65c 0%, #ffd9a0 18%, #ffc0a8 38%, #f5a9b8 58%, #9fb7f5 82%, #6d82c6 100%);
+      min-height: 100vh;
+    }
+
+    .page {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero {
+      min-height: 60vh;
+      padding: 72px 6vw 54px;
+      color: #fff;
+      display: grid;
+      gap: 32px;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(14, 26, 43, 0.85), rgba(30, 58, 102, 0.65));
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: -20% -10%;
+      background: radial-gradient(circle at 20% 20%, rgba(255, 179, 71, 0.6), transparent 45%),
+        radial-gradient(circle at 80% 10%, rgba(255, 111, 97, 0.4), transparent 50%),
+        radial-gradient(circle at 20% 80%, rgba(94, 145, 255, 0.4), transparent 50%);
+      opacity: 0.7;
+      z-index: 0;
+    }
+
+    .hero::after {
+      background: radial-gradient(circle at 70% 70%, rgba(249, 214, 92, 0.5), transparent 45%),
+        radial-gradient(circle at 35% 55%, rgba(125, 209, 129, 0.4), transparent 50%);
+      opacity: 0.5;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 20px;
+      max-width: 680px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 4vw, 4.2rem);
+      margin: 0;
+      letter-spacing: 1px;
+    }
+
+    .hero h1 span {
+      display: block;
+      color: var(--sun);
+      font-size: clamp(3.1rem, 5vw, 4.9rem);
+    }
+
+    .hero p {
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .hero-card {
+      position: relative;
+      z-index: 1;
+      background: var(--card);
+      color: var(--ink);
+      padding: 28px 26px;
+      border-radius: 24px;
+      box-shadow: 0 18px 45px var(--shadow);
+      max-width: 420px;
+      justify-self: start;
+    }
+
+    .hero-card h2 {
+      margin: 0 0 12px;
+      font-size: 1.6rem;
+    }
+
+    .details {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .details li {
+      display: flex;
+      gap: 10px;
+      align-items: baseline;
+      font-size: 1rem;
+    }
+
+    .details strong {
+      min-width: 90px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
+      box-shadow: 0 8px 20px rgba(255, 138, 91, 0.35);
+    }
+
+    .section {
+      padding: 54px 6vw;
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(8px);
+    }
+
+    .section h3 {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+      margin-top: 24px;
+    }
+
+    .card {
+      padding: 22px;
+      border-radius: 20px;
+      background: #fff;
+      box-shadow: 0 14px 30px var(--shadow);
+    }
+
+    .card h4 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+    }
+
+    .accent {
+      border-left: 6px solid var(--accent-2);
+    }
+
+    .schedule {
+      display: grid;
+      gap: 14px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .schedule li {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 10px;
+      align-items: center;
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: var(--paper);
+    }
+
+    .schedule strong {
+      color: var(--accent-2);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 36px 6vw 64px;
+      color: #fff;
+      background: linear-gradient(135deg, #172b45, #203b6b);
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      background: var(--sun);
+      color: #13233b;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 12px 24px rgba(255, 179, 71, 0.4);
+    }
+
+    .rsvp-form {
+      display: grid;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .field {
+      display: grid;
+      gap: 6px;
+    }
+
+    .field label {
+      font-weight: 600;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      font-family: inherit;
+      font-size: 1rem;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(19, 35, 59, 0.2);
+      background: #fff;
+    }
+
+    .rsvp-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .rsvp-button {
+      border: none;
+      cursor: pointer;
+      padding: 12px 22px;
+      border-radius: 999px;
+      background: var(--accent-2);
+      color: #fff;
+      font-weight: 700;
+      box-shadow: 0 12px 24px rgba(94, 145, 255, 0.35);
+    }
+
+    .confetti {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .confetti span {
+      position: absolute;
+      width: 12px;
+      height: 18px;
+      border-radius: 4px;
+      opacity: 0.85;
+      animation: float 9s linear infinite;
+    }
+
+    .confetti span:nth-child(1) { left: 8%; top: 10%; background: var(--confetti-1); animation-delay: 0s; }
+    .confetti span:nth-child(2) { left: 28%; top: 20%; background: var(--confetti-2); animation-delay: 1s; }
+    .confetti span:nth-child(3) { left: 48%; top: 12%; background: var(--confetti-3); animation-delay: 2s; }
+    .confetti span:nth-child(4) { left: 68%; top: 18%; background: var(--confetti-4); animation-delay: 3s; }
+    .confetti span:nth-child(5) { left: 88%; top: 8%; background: var(--confetti-1); animation-delay: 4s; }
+
+    @keyframes float {
+      0% { transform: translateY(-10vh) rotate(0deg); }
+      50% { transform: translateY(40vh) rotate(120deg); }
+      100% { transform: translateY(90vh) rotate(240deg); }
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        padding-top: 54px;
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        justify-self: stretch;
+      }
+
+      .schedule li {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="confetti" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <section class="hero">
+      <div class="hero-content">
+        <div class="badge">Four &amp; Fabulous</div>
+        <h1>You're invited to <span>Mahika's 4th Birthday</span></h1>
+        <p>
+          Join us for a playful afternoon packed with games, glitter, and giggles. Let's celebrate
+          four amazing years with music, cake, and sweet surprises.
+        </p>
+      </div>
+      <div class="hero-card">
+        <h2>Party Details</h2>
+        <ul class="details">
+          <li><strong>Date</strong>March 21, 2026</li>
+          <li><strong>Time</strong>4:00 PM onwards</li>
+          <li><strong>Place</strong>Shoreview Grand Party Hall</li>
+          <li><strong>Theme</strong>Paw Patrol</li>
+          <li><strong>RSVP</strong>By March 12</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h3>What to Expect</h3>
+      <p>A curated mix of activities to keep little explorers smiling all afternoon.</p>
+      <div class="grid">
+        <div class="card accent">
+          <h4>Games &amp; Crafts</h4>
+          <p>Bubble stations, mini art corners, and playful team games for tiny adventurers.</p>
+        </div>
+        <div class="card accent">
+          <h4>Snack Time</h4>
+          <p>Fruit cups, mini sandwiches, and a sprinkle donut bar to refuel the fun.</p>
+        </div>
+        <div class="card accent">
+          <h4>Cake Moment</h4>
+          <p>Gather around for the birthday song and Mahika's magical cake reveal.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background: rgba(255, 247, 234, 0.9);">
+      <h3>Mini Schedule</h3>
+      <ul class="schedule">
+        <li><strong>4:00 PM</strong>Welcome + photo corner</li>
+        <li><strong>4:30 PM</strong>Games and craft stations</li>
+        <li><strong>5:30 PM</strong>Cake cutting + singalong</li>
+        <li><strong>6:00 PM</strong>Party favors and goodbye hugs</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h3>Helpful Notes</h3>
+      <div class="grid">
+        <div class="card">
+          <h4>Dress Code</h4>
+          <p>Colorful outfits encouraged. Sneakers are great for running around.</p>
+        </div>
+        <div class="card">
+          <h4>Gifts</h4>
+          <p>Your presence is the best present. If you'd like, bring a favorite storybook.</p>
+        </div>
+        <div class="card">
+          <h4>Contact</h4>
+          <p>Reach out to Sudha &amp; Manvith at <strong>4403916020</strong>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="rsvp" style="background: rgba(255, 255, 255, 0.75);">
+      <h3>RSVP</h3>
+      <p>Let us know who is joining and any helpful notes.</p>
+      <form class="rsvp-form" action="mailto:manvithk@yahoo.com" method="post" enctype="text/plain">
+        <div class="field">
+          <label for="rsvp-name">Your name</label>
+          <input id="rsvp-name" name="Name" type="text" placeholder="Parent or guardian name" required />
+        </div>
+        <div class="field">
+          <label for="rsvp-contact">Email or phone</label>
+          <input id="rsvp-contact" name="Contact" type="text" placeholder="you@email.com or +91 90000 00000" required />
+        </div>
+        <div class="field">
+          <label for="rsvp-attending">Will you attend?</label>
+          <select id="rsvp-attending" name="Attending" required>
+            <option value="" selected disabled>Choose one</option>
+            <option value="Yes">Yes, we will be there</option>
+            <option value="Maybe">Maybe</option>
+            <option value="No">Sorry, cannot make it</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="rsvp-guests">Number of guests</label>
+          <input id="rsvp-guests" name="Guests" type="number" min="1" max="8" placeholder="2" />
+        </div>
+        <div class="field">
+          <label for="rsvp-notes">Allergies or notes</label>
+          <textarea id="rsvp-notes" name="Notes" rows="3" placeholder="Food allergies, pickup needs, anything helpful"></textarea>
+        </div>
+        <div class="rsvp-actions">
+          <button class="rsvp-button" type="submit">Send RSVP</button>
+          <span>Or text Sudha &amp; Manvith at 4403916020</span>
+        </div>
+      </form>
+    </section>
+
+    <footer class="footer">
+      <h3>Can't wait to celebrate with you!</h3>
+      <p>Tap below to confirm you're coming.</p>
+      <a class="cta" href="#rsvp">RSVP Now</a>
+    </footer>
+  </div>
+</body>
+</html>
