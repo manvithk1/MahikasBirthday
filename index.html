@@ -297,6 +297,23 @@
       box-shadow: 0 12px 24px rgba(94, 145, 255, 0.35);
     }
 
+    .rsvp-success {
+      display: none;
+      padding: 12px 16px;
+      border-radius: 12px;
+      background: rgba(29, 78, 216, 0.12);
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .rsvp-success.is-visible {
+      display: inline-block;
+    }
+
+    .rsvp-target {
+      display: none;
+    }
+
     .confetti {
       position: absolute;
       inset: 0;
@@ -414,54 +431,64 @@
           <h4>Gifts</h4>
           <p>Your presence is the best present. If you'd like, bring a favorite storybook.</p>
         </div>
-        <div class="card">
-          <h4>Contact</h4>
-          <p>Reach out to Sudha &amp; Manvith at <strong>4403916020</strong>.</p>
-        </div>
       </div>
     </section>
 
     <section class="section" id="rsvp" style="background: rgba(255, 255, 255, 0.75);">
       <h3>RSVP</h3>
       <p>Let us know who is joining and any helpful notes.</p>
-      <form class="rsvp-form" action="mailto:manvithk@yahoo.com" method="post" enctype="text/plain">
+      <form class="rsvp-form" action="https://docs.google.com/forms/d/e/1FAIpQLSc-yRxP9Z4U7XlSkl9yuITt_Zt9-mneUakyAFC57mGk1Ut61w/formResponse" method="post" target="rsvp-target">
         <div class="field">
           <label for="rsvp-name">Your name</label>
-          <input id="rsvp-name" name="Name" type="text" placeholder="Parent or guardian name" required />
+          <input id="rsvp-name" name="entry.257095386" type="text" placeholder="Parent or guardian name" required />
         </div>
         <div class="field">
-          <label for="rsvp-contact">Email or phone</label>
-          <input id="rsvp-contact" name="Contact" type="text" placeholder="you@email.com or +91 90000 00000" required />
+          <label for="rsvp-email">Email</label>
+          <input id="rsvp-email" name="entry.1498135098" type="email" placeholder="you@email.com" required />
         </div>
         <div class="field">
           <label for="rsvp-attending">Will you attend?</label>
-          <select id="rsvp-attending" name="Attending" required>
+          <select id="rsvp-attending" name="entry.877086558" required>
             <option value="" selected disabled>Choose one</option>
-            <option value="Yes">Yes, we will be there</option>
+            <option value="Yes, I'll be there">Yes, I'll be there</option>
             <option value="Maybe">Maybe</option>
-            <option value="No">Sorry, cannot make it</option>
+            <option value="Sorry, cannot make it">Sorry, cannot make it</option>
           </select>
         </div>
         <div class="field">
-          <label for="rsvp-guests">Number of guests</label>
-          <input id="rsvp-guests" name="Guests" type="number" min="1" max="8" placeholder="2" />
+          <label for="rsvp-notes">Message</label>
+          <textarea id="rsvp-notes" name="entry.2606285" rows="3" placeholder="Any notes for us"></textarea>
         </div>
         <div class="field">
-          <label for="rsvp-notes">Allergies or notes</label>
-          <textarea id="rsvp-notes" name="Notes" rows="3" placeholder="Food allergies, pickup needs, anything helpful"></textarea>
+          <label for="rsvp-guests">Number of guests</label>
+          <input id="rsvp-guests" name="entry.1733987990" type="number" min="1" max="10" placeholder="3" required />
         </div>
         <div class="rsvp-actions">
           <button class="rsvp-button" type="submit">Send RSVP</button>
-          <span>Or text Sudha &amp; Manvith at 4403916020</span>
+          <span>Text Sudha at 440-391-6020 or Manvith at 678-644-3428</span>
         </div>
+        <div class="rsvp-success" role="status" aria-live="polite">Thanks! Your RSVP was sent.</div>
       </form>
+      <iframe class="rsvp-target" name="rsvp-target" title="RSVP submission"></iframe>
     </section>
 
     <footer class="footer">
       <h3>Can't wait to celebrate with you!</h3>
       <p>Tap below to confirm you're coming.</p>
-      <a class="cta" href="#rsvp">RSVP Now</a>
     </footer>
   </div>
+  <script>
+    const rsvpForm = document.querySelector('.rsvp-form');
+    const rsvpSuccess = document.querySelector('.rsvp-success');
+
+    if (rsvpForm && rsvpSuccess) {
+      rsvpForm.addEventListener('submit', () => {
+        setTimeout(() => {
+          rsvpSuccess.classList.add('is-visible');
+          rsvpForm.reset();
+        }, 150);
+      });
+    }
+  </script>
 </body>
 </html>
