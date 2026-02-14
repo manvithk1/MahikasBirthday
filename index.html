@@ -6,19 +6,19 @@
   <title>Mahika's 4th Birthday Party</title>
   <style>
     :root {
-      --night: #0e1a2b;
-      --sky: #1d3a66;
-      --sun: #ffb347;
-      --confetti-1: #ff6f61;
-      --confetti-2: #6bc5d2;
-      --confetti-3: #f9d65c;
-      --confetti-4: #7dd181;
-      --ink: #13233b;
-      --paper: #fff7ea;
-      --accent: #ff8a5b;
-      --accent-2: #5e91ff;
-      --shadow: rgba(10, 20, 40, 0.22);
-      --card: rgba(255, 247, 234, 0.92);
+      --night: #0b1a2f;
+      --sky: #1a4fa3;
+      --sun: #ffd447;
+      --confetti-1: #d62828;
+      --confetti-2: #1d4ed8;
+      --confetti-3: #f6c338;
+      --confetti-4: #ffffff;
+      --ink: #0f1c35;
+      --paper: #f7f8ff;
+      --accent: #d62828;
+      --accent-2: #1d4ed8;
+      --shadow: rgba(8, 20, 44, 0.22);
+      --card: rgba(255, 255, 255, 0.92);
     }
 
     * {
@@ -29,13 +29,26 @@
       margin: 0;
       font-family: "Baloo 2", "Trebuchet MS", "Segoe UI", sans-serif;
       color: var(--ink);
-      background: radial-gradient(circle at top, #f9d65c 0%, #ffd9a0 18%, #ffc0a8 38%, #f5a9b8 58%, #9fb7f5 82%, #6d82c6 100%);
+      background: radial-gradient(circle at 15% 20%, #ffd447 0%, #fff1b3 20%, transparent 40%),
+        radial-gradient(circle at 80% 15%, #ffffff 0%, #e3edff 30%, transparent 55%),
+        linear-gradient(160deg, #143a8c 0%, #1d4ed8 35%, #e11d48 75%, #f6c338 100%);
       min-height: 100vh;
     }
 
     .page {
       position: relative;
       overflow: hidden;
+    }
+
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cg fill='none' stroke='none'%3E%3Ccircle cx='36' cy='38' r='9' fill='rgba(255,255,255,0.35)'/%3E%3Ccircle cx='60' cy='28' r='8' fill='rgba(255,255,255,0.35)'/%3E%3Ccircle cx='86' cy='36' r='9' fill='rgba(255,255,255,0.35)'/%3E%3Ccircle cx='72' cy='60' r='14' fill='rgba(255,255,255,0.35)'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: 140px 140px;
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: 0;
     }
 
     .hero {
@@ -45,7 +58,7 @@
       display: grid;
       gap: 32px;
       align-items: center;
-      background: linear-gradient(135deg, rgba(14, 26, 43, 0.85), rgba(30, 58, 102, 0.65));
+      background: linear-gradient(135deg, rgba(14, 40, 96, 0.88), rgba(220, 38, 38, 0.7));
     }
 
     .hero::before,
@@ -53,17 +66,17 @@
       content: "";
       position: absolute;
       inset: -20% -10%;
-      background: radial-gradient(circle at 20% 20%, rgba(255, 179, 71, 0.6), transparent 45%),
-        radial-gradient(circle at 80% 10%, rgba(255, 111, 97, 0.4), transparent 50%),
-        radial-gradient(circle at 20% 80%, rgba(94, 145, 255, 0.4), transparent 50%);
-      opacity: 0.7;
+      background: radial-gradient(circle at 20% 20%, rgba(255, 212, 71, 0.45), transparent 45%),
+        radial-gradient(circle at 80% 10%, rgba(29, 78, 216, 0.5), transparent 50%),
+        radial-gradient(circle at 20% 80%, rgba(214, 40, 40, 0.4), transparent 50%);
+      opacity: 0.75;
       z-index: 0;
     }
 
     .hero::after {
-      background: radial-gradient(circle at 70% 70%, rgba(249, 214, 92, 0.5), transparent 45%),
-        radial-gradient(circle at 35% 55%, rgba(125, 209, 129, 0.4), transparent 50%);
-      opacity: 0.5;
+      background: radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.4), transparent 45%),
+        radial-gradient(circle at 35% 55%, rgba(246, 195, 56, 0.45), transparent 50%);
+      opacity: 0.55;
     }
 
     .hero-content {
@@ -72,6 +85,28 @@
       display: grid;
       gap: 20px;
       max-width: 680px;
+    }
+
+    .hero-tagline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #fff;
+    }
+
+    .hero-tagline span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--sun);
+      color: var(--ink);
+      font-size: 1rem;
+      box-shadow: 0 8px 18px rgba(255, 212, 71, 0.45);
     }
 
     .hero h1 {
@@ -137,12 +172,12 @@
       background: var(--accent);
       color: #fff;
       font-weight: 600;
-      box-shadow: 0 8px 20px rgba(255, 138, 91, 0.35);
+      box-shadow: 0 8px 20px rgba(214, 40, 40, 0.35);
     }
 
     .section {
       padding: 54px 6vw;
-      background: rgba(255, 255, 255, 0.65);
+      background: rgba(255, 255, 255, 0.7);
       backdrop-filter: blur(8px);
     }
 
@@ -164,6 +199,7 @@
       border-radius: 20px;
       background: #fff;
       box-shadow: 0 14px 30px var(--shadow);
+      border: 2px solid rgba(29, 78, 216, 0.08);
     }
 
     .card h4 {
@@ -319,6 +355,7 @@
     <section class="hero">
       <div class="hero-content">
         <div class="badge">Four &amp; Fabulous</div>
+        <div class="hero-tagline"><span>🐾</span>Paw Patrol Party Crew</div>
         <h1>You're invited to <span>Mahika's 4th Birthday</span></h1>
         <p>
           Join us for a playful afternoon packed with games, glitter, and giggles. Let's celebrate
