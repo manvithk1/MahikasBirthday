@@ -438,6 +438,8 @@
       <h3>RSVP</h3>
       <p>Let us know who is joining and any helpful notes.</p>
       <form class="rsvp-form" action="https://docs.google.com/forms/d/e/1FAIpQLSc-yRxP9Z4U7XlSkl9yuITt_Zt9-mneUakyAFC57mGk1Ut61w/formResponse" method="post" target="rsvp-target">
+        <input type="hidden" name="fvv" value="1" />
+        <input type="hidden" name="pageHistory" value="0" />
         <div class="field">
           <label for="rsvp-name">Your name</label>
           <input id="rsvp-name" name="entry.257095386" type="text" placeholder="Parent or guardian name" required />
@@ -457,12 +459,13 @@
         </div>
         <div class="field">
           <label for="rsvp-notes">Message</label>
-          <textarea id="rsvp-notes" name="entry.2606285" rows="3" placeholder="Any notes for us"></textarea>
+          <textarea id="rsvp-notes" name="entry.2606285" rows="3" placeholder="Any notes for us" required></textarea>
         </div>
         <div class="field">
           <label for="rsvp-guests">Number of guests</label>
           <input id="rsvp-guests" name="entry.1733987990" type="number" min="1" max="10" placeholder="3" required />
         </div>
+        <input type="hidden" name="submit" value="Submit" />
         <div class="rsvp-actions">
           <button class="rsvp-button" type="submit">Send RSVP</button>
           <span>Text Sudha at 440-391-6020 or Manvith at 678-644-3428</span>
