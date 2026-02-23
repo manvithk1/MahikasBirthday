@@ -397,15 +397,15 @@
       <div class="grid">
         <div class="card accent">
           <h4>Games &amp; Crafts</h4>
-          <p>Bubble stations, mini art corners, and playful team games for tiny adventurers.</p>
-        </div>
-        <div class="card accent">
-          <h4>Snack Time</h4>
-          <p>Fruit cups, mini sandwiches, and a sprinkle donut bar to refuel the fun.</p>
+          <p>Mini art corners and playful team games for tiny adventurers.</p>
         </div>
         <div class="card accent">
           <h4>Cake Moment</h4>
           <p>Gather around for the birthday song and Mahika's magical cake reveal.</p>
+        </div>
+        <div class="card accent">
+          <h4>Dinner Time</h4>
+          <p>Enjoy a warm dinner spread to refuel the fun.</p>
         </div>
       </div>
     </section>
@@ -437,45 +437,12 @@
     <section class="section" id="rsvp" style="background: rgba(255, 255, 255, 0.75);">
       <h3>RSVP</h3>
       <p>Let us know who is joining and any helpful notes.</p>
-      <form class="rsvp-form" action="https://docs.google.com/forms/d/e/1FAIpQLSc-yRxP9Z4U7XlSkl9yuITt_Zt9-mneUakyAFC57mGk1Ut61w/formResponse" method="post" target="rsvp-target">
-        <input type="hidden" name="fvv" value="1" />
-        <input type="hidden" name="pageHistory" value="0" />
-        <div class="field">
-          <label for="rsvp-name">Your name</label>
-          <input id="rsvp-name" name="entry.257095386" type="text" placeholder="Parent or guardian name" required />
-        </div>
-        <div class="field">
-          <label for="rsvp-phone">Phone</label>
-          <input id="rsvp-phone" name="entry.1498135098" type="text" placeholder="6786443428" required />
-        </div>
-        <div class="field">
-          <label for="rsvp-attending">Will you attend?</label>
-          <select id="rsvp-attending" name="entry.877086558" required>
-            <option value="" selected disabled>Choose one</option>
-            <option value="Yes, I'll be there">Yes, I'll be there</option>
-            <option value="Maybe">Maybe</option>
-            <option value="Sorry, cannot make it">Sorry, cannot make it</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="rsvp-notes">Message</label>
-          <textarea id="rsvp-notes" name="entry.2606285" rows="3" placeholder="Any notes for us" required></textarea>
-        </div>
-        <div class="field">
-          <label for="rsvp-guests">Number of guests</label>
-          <input id="rsvp-guests" name="entry.1733987990" type="number" min="1" max="10" placeholder="3" required />
-        </div>
-        <input type="hidden" name="submit" value="Submit" />
-        <div class="rsvp-actions">
-          <button class="rsvp-button" type="submit">Send RSVP</button>
-          <span>Text Sudha at 440-391-6020 or Manvith at 678-644-3428</span>
-        </div>
+      <div class="rsvp-form">
         <div class="rsvp-actions">
           <a class="cta" href="https://forms.gle/6SiLuatdHqXMKhN87" target="_blank" rel="noreferrer">Open RSVP Form</a>
+          <span>Text Sudha at 440-391-6020 or Manvith at 678-644-3428</span>
         </div>
-        <div class="rsvp-success" role="status" aria-live="polite">Thanks! Your RSVP was sent.</div>
-      </form>
-      <iframe class="rsvp-target" name="rsvp-target" title="RSVP submission"></iframe>
+      </div>
     </section>
 
     <footer class="footer">
@@ -483,18 +450,5 @@
       <p>Tap below to confirm you're coming.</p>
     </footer>
   </div>
-  <script>
-    const rsvpForm = document.querySelector('.rsvp-form');
-    const rsvpSuccess = document.querySelector('.rsvp-success');
-
-    if (rsvpForm && rsvpSuccess) {
-      rsvpForm.addEventListener('submit', () => {
-        setTimeout(() => {
-          rsvpSuccess.classList.add('is-visible');
-          rsvpForm.reset();
-        }, 150);
-      });
-    }
-  </script>
 </body>
 </html>
